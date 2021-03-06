@@ -1,4 +1,4 @@
-name: Deploy Bucket
+name: Deploy Stack AWS
 
 on:
   push:
