@@ -10,11 +10,12 @@ class AwsCdkExplampleStack(core.Stack):
         super().__init__(scope, construct_id, **kwargs)
         S3.Bucket(self, 'bucket-bootcamp04-test', bucket_name='bucket-bootcamp04-test')
 
-        vpc = ec2.Vpc(self, 'vpc', cidr='0.0.0.0/0', id='vpc')
+        vpc = ec2.Vpc(self, 'vpc', cidr='0.0.0.0/16')
 
         redshift.Cluster(
             self, 'redshift-bootcamp03-test', 
-            master_user= "admin",
+            master_user= redshift.Login(master_username='admin'),
             cluster_name='redshift-bootcamp03-test',
-            vpc=vpc
+            vpc=vpc,
+            cluster_type=redshift.ClusterType.SINGLE_NODE
         )
