@@ -12,15 +12,10 @@ class AwsCdkExplampleStack(core.Stack):
 
         vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
 
-
-        cluster = _redshift.Cluster(self, "Redshift",
+        _redshift.Cluster(self, "Redshift",
             master_user=_redshift.Login(
                 master_username="admin"
             ),
             vpc=vpc
         )
-        cluster.connections.allow_from_any_ipv4("Open to the world")
-        cluster.cluster_endpoint.socket_address
-        cluster.add_rotation_multi_user("admin",
-            secret="Admin1234"
-        )
+        
