@@ -12,10 +12,11 @@ class AwsCdkExplampleStack(core.Stack):
 
         vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
 
-        _redshift.Cluster(self, "Redshift",
+        cluster = _redshift.Cluster(self, "Redshift",
             master_user=_redshift.Login(
                 master_username="admin"
             ),
             vpc=vpc
         )
+        cluster.connections.allow_from_any_ipv4("Open to the world")
         
