@@ -12,8 +12,9 @@ class AwsCdkExplampleStack(core.Stack):
 
         vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
 
+
         cluster = _redshift.Cluster(self, "Redshift",
-            master_user=Login(
+            master_user=_redshift.Login(
                 master_username="admin"
             ),
             vpc=vpc
