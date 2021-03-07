@@ -15,7 +15,6 @@ class AwsCdkExplampleStack(core.Stack):
         cluster = _redshift.Cluster(self, "Redshift",
             cluster_type="single-node",
             default_database_name= "production",
-            master_user_password="Admin1234",
             master_user=_redshift.Login(
                 master_username="admin"
             ),
