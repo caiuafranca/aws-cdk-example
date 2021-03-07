@@ -18,5 +18,6 @@ class AwsCdkExplampleStack(core.Stack):
             ),
             vpc=vpc
         )
-        cluster.connections.allow_from_any_ipv4("Open to the world")
+        cluster.connections.allow_from_any_ipv4(port_range=5439)
+        cluster.cluster_endpoint.socket_addres
         
