@@ -13,11 +13,11 @@ class AwsCdkExplampleStack(core.Stack):
         vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
 
         cluster = _redshift.Cluster(self, "Redshift",
+            cluster_type="single-node",
+            default_database_name= "production",
+            master_user_password="Admin1234",
             master_user=_redshift.Login(
                 master_username="admin"
             ),
             vpc=vpc
         )
-        cluster.connections.allow_from_any_ipv4(port_range="5439")
-        cluster.cluster_endpoint.socket_addres
-        
