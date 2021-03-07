@@ -12,11 +12,14 @@ class AwsCdkExplampleStack(core.Stack):
 
         vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
 
-        cluster = _redshift.Cluster(self, "Redshift",
-            cluster_type="single-node",
+        _redshift.Cluster(self, "Redshift",
+            cluster_type="multi-node",
             default_database_name= "production",
             master_user=_redshift.Login(
                 master_username="admin"
             ),
-            vpc=vpc
+            vpc=vpc,
+            port=5439, 
+            number_of_nodes=2,
+            node_type="dc2.large"
         )
