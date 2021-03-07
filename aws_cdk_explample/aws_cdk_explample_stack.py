@@ -20,5 +20,5 @@ class AwsCdkExplampleStack(core.Stack):
             vpc=vpc,
             port=5439, 
             number_of_nodes=2,
-            node_type='multi-node'
+            node_type=2
         )
