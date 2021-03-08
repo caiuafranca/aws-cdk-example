@@ -9,16 +9,3 @@ class AwsCdkExplampleStack(core.Stack):
     def __init__(self, scope: core.Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         S3.Bucket(self, 'bucket-bootcamp04-test', bucket_name='bucket-bootcamp04-test')
-
-        vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
-
-        _redshift.Cluster(self, 'redshift-bootcamp04-cluster',
-            default_database_name= "production",
-            master_user=_redshift.Login(
-                master_username="admin"
-            ),
-            vpc=vpc,
-            port=5439, 
-            number_of_nodes=2,
-            node_type=2
-        )
