@@ -11,4 +11,4 @@ class AwsCdkExplampleStack(core.Stack):
         
         S3.Bucket(self, 'bucket-bootcamp04-test', bucket_name='bucket-bootcamp04-test')
 
-        vpc = ec2.Vpc(self, 'myVpc', cidr='0.0.0.0/16')
+        vpc = ec2.Vpc(self, 'myVpc', cidr='10.0.0.0/16')
